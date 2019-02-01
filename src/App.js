@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {HashRouter} from 'react-router-dom';
+import {Provider} from 'react-redux'
+import Header from './Components/Header';
+import routes from './routes';
+import myStore from './ducks/store'
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={myStore}>
+      <HashRouter>
+        <div className="App">
+          <Header />
+          
+          
+          {routes}          
+        </div>
+      </HashRouter>
+      </Provider>
     );
   }
 }
